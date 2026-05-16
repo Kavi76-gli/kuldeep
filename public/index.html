@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="hi">
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1669031804248720');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1669031804248720&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TRADE FINDER - Official</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0a0e27, #050816);
+    color: white;
+    text-align: center;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 25px 20px;
+}
+
+.header {
+    background: #111833;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 15px;
+}
+
+.profile-img {
+    width: 85px;
+    height: 85px;
+    border-radius: 12px;
+    border: 2px solid #22c55e;
+}
+
+.badge {
+    display: inline-block;
+    background: #22c55e33;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    margin: 3px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 14px;
+    background: linear-gradient(135deg, #22c55e, #00ffcc);
+    color: black;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.card {
+    background: #111833;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.countdown {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.footer {
+    margin-top: 15px;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+
+
+
+
+
+.popup {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #0f172a;
+    color: #aaa;
+    padding: 10px 14px;
+    font-size: 12px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 9999;
+}
+
+/* Logo */
+.popup-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid #22c55e;
+}
+
+/* Text */
+.popup-text {
+    line-height: 1.3;
+}
+
+/* Verified Badge */
+.badge {
+    font-size: 10px;
+    color: #22c55e;
+}
+
+/* Link */
+.popup a {
+    color: #22c55e;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Fade */
+.popup.show {
+    opacity: 0.95;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="container">
+
+<div class="header">
+    <img src="k.jpeg" class="profile-img">
+    <h2>🚀 TRADE FINDER</h2>
+    <p>👤 Akash V</p>
+
+    <div>
+        <span class="badge">24/7 Updates</span>
+        <span class="badge">Free Join</span>
+    </div>
+</div>
+
+<!-- BUTTON -->
+<a class="btn" href="#" id="joinBtn">
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="18">
+Join Telegram Channel
+</a>
+
+<div class="card">📊 Daily Market Insights & Analysis</div>
+<div class="card">📚 Beginner Friendly Trading Learning</div>
+<div class="card">⚡ Simple & Easy Trading Strategies</div>
+<div class="card">💰 Smart Tips to Improve Profit</div>
+
+<div class="countdown">
+Redirecting in <span id="count">10</span> sec...
+</div>
+
+<a class="btn" href="#" id="joinBtn2">
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="18">
+Join Now
+</a>
+
+<!-- POPUP -->
+<!-- ✅ Premium Right Popup -->
+<div id="adPopup" class="popup">
+    <img src="ka.jpg" class="popup-logo">
+
+    <div class="popup-text">
+        <span class="popup-badge">✔ Verified Ads Partner</span>
+        Ads setup managed by 
+        <a href="https://t.me/+hwUyreNlEtZjMmY1" target="_blank">
+            Kavi Ads Agency
+        </a>
+    </div>
+</div>
+
+</div>
+<script>
+
+var TELEGRAM_LINK = "https://t.me/+paO1BzSko344ZGQ1";
+
+var popup = document.getElementById("adPopup");
+var countEl = document.getElementById("count");
+
+var joinBtn = document.getElementById("joinBtn");
+var joinBtn2 = document.getElementById("joinBtn2");
+
+/* GLOBAL SAFE GUARD */
+var leadFired = false;
+
+/* FIRE LEAD ONLY ONCE */
+function fireLeadOnce(){
+
+    if(leadFired) return;
+
+    leadFired = true;
+
+    if(typeof fbq === "function"){
+        fbq('track', 'Lead');
+    }
+
+}
+
+/* REDIRECT FUNCTION */
+function redirectToTelegram(){
+
+    setTimeout(function(){
+
+        window.location.href = TELEGRAM_LINK;
+
+    }, 300);
+
+}
+
+/* JOIN FUNCTION */
+function joinNow(e){
+
+    if(e){
+        e.preventDefault();
+    }
+
+    fireLeadOnce();
+    redirectToTelegram();
+
+}
+
+/* BUTTON EVENTS */
+if(joinBtn){
+    joinBtn.addEventListener("click", joinNow);
+}
+
+if(joinBtn2){
+    joinBtn2.addEventListener("click", joinNow);
+}
+
+/* COUNTDOWN */
+var time = 10;
+
+var timer = setInterval(function(){
+
+    time--;
+
+    if(countEl){
+        countEl.innerText = time;
+    }
+
+    if(time <= 0){
+
+        clearInterval(timer);
+
+        fireLeadOnce();
+        redirectToTelegram();
+
+    }
+
+}, 1000);
+
+/* POPUP FUNCTION */
+function showPopup(){
+
+    if(!popup) return;
+
+    popup.classList.add("show");
+
+    setTimeout(function(){
+
+        popup.classList.remove("show");
+
+    }, 4000);
+
+}
+
+/* POPUP AUTO SHOW */
+setTimeout(showPopup, 2000);
+
+setInterval(showPopup, 12000);
+
+</script>
+
+</body>
+</html>
