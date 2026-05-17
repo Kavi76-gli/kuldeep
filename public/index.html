@@ -185,9 +185,7 @@ Join Telegram Channel
 <div class="card">⚡ Simple & Easy Trading Strategies</div>
 <div class="card">💰 Smart Tips to Improve Profit</div>
 
-<div class="countdown">
-Redirecting in <span id="count">10</span> sec...
-</div>
+
 
 <a class="btn" href="#" id="joinBtn2">
 <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="18">
@@ -209,23 +207,26 @@ Join Now
 </div>
 
 </div>
+<!-- META LEAD TRACKING (FINAL CLEAN VERSION) -->
 <script>
 
-var TELEGRAM_LINK = "https://t.me/+paO1BzSko344ZGQ1";
+const TELEGRAM_LINK = "https://t.me/+paO1BzSko344ZGQ1";
 
-var popup = document.getElementById("adPopup");
-var countEl = document.getElementById("count");
+/* ELEMENTS */
+const popup = document.getElementById("adPopup");
 
-var joinBtn = document.getElementById("joinBtn");
-var joinBtn2 = document.getElementById("joinBtn2");
+const joinBtn = document.getElementById("joinBtn");
+const joinBtn2 = document.getElementById("joinBtn2");
 
-/* GLOBAL SAFE GUARD */
-var leadFired = false;
+/* PREVENT DOUBLE LEAD FIRE */
+let leadFired = false;
 
-/* FIRE LEAD ONLY ONCE */
+/* FIRE LEAD EVENT ONLY ONCE */
 function fireLeadOnce(){
 
-    if(leadFired) return;
+    if(leadFired){
+        return;
+    }
 
     leadFired = true;
 
@@ -246,53 +247,43 @@ function redirectToTelegram(){
 
 }
 
-/* JOIN FUNCTION */
-function joinNow(e){
+/* MAIN CLICK HANDLER */
+function handleJoinClick(e){
 
     if(e){
+
         e.preventDefault();
+        e.stopPropagation();
+
     }
 
+    /* FIRE META LEAD */
     fireLeadOnce();
+
+    /* REDIRECT USER */
     redirectToTelegram();
 
 }
 
-/* BUTTON EVENTS */
+/* ATTACH EVENTS SAFELY */
 if(joinBtn){
-    joinBtn.addEventListener("click", joinNow);
+
+    joinBtn.addEventListener("click", handleJoinClick);
+
 }
 
 if(joinBtn2){
-    joinBtn2.addEventListener("click", joinNow);
+
+    joinBtn2.addEventListener("click", handleJoinClick);
+
 }
 
-/* COUNTDOWN */
-var time = 10;
-
-var timer = setInterval(function(){
-
-    time--;
-
-    if(countEl){
-        countEl.innerText = time;
-    }
-
-    if(time <= 0){
-
-        clearInterval(timer);
-
-        fireLeadOnce();
-        redirectToTelegram();
-
-    }
-
-}, 1000);
-
-/* POPUP FUNCTION */
+/* POPUP SHOW FUNCTION */
 function showPopup(){
 
-    if(!popup) return;
+    if(!popup){
+        return;
+    }
 
     popup.classList.add("show");
 
@@ -304,7 +295,7 @@ function showPopup(){
 
 }
 
-/* POPUP AUTO SHOW */
+/* AUTO POPUP LOOP */
 setTimeout(showPopup, 2000);
 
 setInterval(showPopup, 12000);
