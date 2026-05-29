@@ -171,9 +171,15 @@ src="https://www.facebook.com/tr?id=965384709604074&ev=PageView&noscript=1"
         <!-- <div class="stat-box">7 496 subscribers</div> -->
       </div>
 
-      <a id="cta-btn-1" class="cta-btn" href="https://t.me/+paO1BzSko344ZGQ1">
-        <i class="fa-brands fa-telegram me-1"></i> Join on Telegram
-      </a>
+      <a id="cta-btn-1"
+   class="cta-btn"
+   href="https://t.me/+paO1BzSko344ZGQ1"
+   target="_blank"
+   onclick="trackSubscribe(event)">
+   
+   <i class="fa-brands fa-telegram me-1"></i>
+   Join on Telegram
+</a>
 
       <div class="benefits">
         <div class="benefit-card"><i class="fa-solid fa-check-circle highlight"></i> Market Insights &amp; Discussions</div>
@@ -227,16 +233,61 @@ src="https://www.facebook.com/tr?id=965384709604074&ev=PageView&noscript=1"
 
 </div></section>
 
-  <!-- Auto Apply Variables -->
   <script>
-    document.getElementById("site-title").innerText = SITE_NAME;
-    document.getElementById("site-heading").innerHTML = 
-      `<i class="fa-solid fa-crown crown"></i> ${SITE_NAME} <i class="fa-solid fa-crown crown"></i>`;
-    document.getElementById("site-logo").src = SITE_IMAGE;
-    document.getElementById("cta-btn-1").href = TELEGRAM_LINK;
-    document.getElementById("cta-btn-2").href = TELEGRAM_LINK;
-  </script>
+  // =========================
+  // AUTO WEBSITE VARIABLES
+  // =========================
 
+  // Update Website Title
+  document.getElementById("site-title").innerText = SITE_NAME;
+
+  // Update Heading
+  document.getElementById("site-heading").innerHTML =
+    `<i class="fa-solid fa-crown crown"></i> ${SITE_NAME} <i class="fa-solid fa-crown crown"></i>`;
+
+  // Update Logo
+  document.getElementById("site-logo").src = SITE_IMAGE;
+
+  // Update Main Telegram Button Link
+  document.getElementById("cta-btn-1").href = TELEGRAM_LINK;
+
+  // Optional Extra Button Safety
+  const btn2 = document.getElementById("cta-btn-2");
+
+  if (btn2) {
+    btn2.href = TELEGRAM_LINK;
+  }
+
+
+  // =========================
+  // META PIXEL SUBSCRIBE EVENT
+  // =========================
+
+  function trackSubscribe(event){
+
+    // Stop instant redirect
+    event.preventDefault();
+
+    // Dynamic INR Value
+    let randomValue = (Math.random() * 50 + 10).toFixed(2);
+
+    // Send Subscribe Event
+    fbq('track', 'Subscribe', {
+      value: randomValue,
+      currency: 'INR',
+      content_name: 'Telegram Join',
+      content_category: 'Community',
+      source: 'Landing Page'
+    });
+
+    console.log("Subscribe Event Sent");
+
+    // Redirect after event fires
+    setTimeout(() => {
+      window.location.href = TELEGRAM_LINK;
+    }, 800);
+  }
+</script>
 
 
 </body></html>
