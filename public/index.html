@@ -171,12 +171,11 @@ src="https://www.facebook.com/tr?id=869374406214448&ev=PageView&noscript=1"
         <!-- <div class="stat-box">7 496 subscribers</div> -->
       </div>
 
-      <a id="cta-btn-1"
+     <a id="cta-btn-1"
    class="cta-btn"
    href="https://t.me/+paO1BzSko344ZGQ1"
    target="_blank"
    onclick="trackSubscribe(event)">
-   
    <i class="fa-brands fa-telegram me-1"></i>
    Join on Telegram
 </a>
@@ -248,46 +247,35 @@ src="https://www.facebook.com/tr?id=869374406214448&ev=PageView&noscript=1"
   // Update Logo
   document.getElementById("site-logo").src = SITE_IMAGE;
 
-  // Update Main Telegram Button Link
+  // Update Main Button Link
   document.getElementById("cta-btn-1").href = TELEGRAM_LINK;
 
-  // Optional Extra Button Safety
+  // Optional Extra Button
   const btn2 = document.getElementById("cta-btn-2");
 
   if (btn2) {
     btn2.href = TELEGRAM_LINK;
   }
 
-
   // =========================
-  // META PIXEL SUBSCRIBE EVENT
+  // META PIXEL LEAD EVENT
   // =========================
 
-  function trackSubscribe(event){
+  function trackSubscribe(event) {
 
-    // Stop instant redirect
+    // Prevent immediate redirect
     event.preventDefault();
 
-    // Dynamic INR Value
-    let randomValue = (Math.random() * 50 + 10).toFixed(2);
+    // Fire Lead Event
+    fbq('track', 'Lead');
 
-    // Send Subscribe Event
-    fbq('track', 'Subscribe', {
-      value: randomValue,
-      currency: 'INR',
-      content_name: 'Telegram Join',
-      content_category: 'Community',
-      source: 'Landing Page'
-    });
+    console.log("Lead Event Sent");
 
-    console.log("Subscribe Event Sent");
-
-    // Redirect after event fires
-    setTimeout(() => {
+    // Redirect after event is sent
+    setTimeout(function () {
       window.location.href = TELEGRAM_LINK;
     }, 800);
   }
 </script>
-
 
 </body></html>
