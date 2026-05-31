@@ -263,19 +263,17 @@ src="https://www.facebook.com/tr?id=869374406214448&ev=PageView&noscript=1"
 
   function trackSubscribe(event) {
 
-    // Prevent immediate redirect
     event.preventDefault();
 
-    // Fire Lead Event
-    fbq('track', 'Lead');
+    fbq('track', 'Subscribe', {
+        value: Math.floor(Math.random() * 50) + 10,
+        currency: 'INR'
+    });
 
-    console.log("Lead Event Sent");
-
-    // Redirect after event is sent
     setTimeout(function () {
-      window.location.href = TELEGRAM_LINK;
+        window.location.href = TELEGRAM_LINK;
     }, 800);
-  }
+}
 </script>
 
 </body></html>
