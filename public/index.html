@@ -164,6 +164,36 @@ fbq('track', 'PageView');
       font-size: 13px;
       color: #aaa;
     }
+    .disclaimer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    padding: 12px 16px;
+    background: rgba(15,15,15,0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-top: 1px solid rgba(255,255,255,0.12);
+
+    color: #d8d8d8;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+.disclaimer i{
+    color:#ffcc00;
+    margin-right:6px;
+}
+
+.disclaimer strong{
+    color:#ffcc00;
+}
   </style>
 </head>
 <body>
@@ -226,8 +256,22 @@ fbq('track', 'PageView');
 
 
 
-</div></section>
+</div>
 
+
+
+
+
+
+
+
+
+
+</section>
+<div class="disclaimer">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <strong>Disclaimer:</strong> Stock market investments are subject to market risks. Please do your own research before making any investment decisions.
+</div>
   <script>
   // =========================
   // AUTO WEBSITE VARIABLES
@@ -270,6 +314,15 @@ fbq('track', 'PageView');
         window.location.href = TELEGRAM_LINK;
     }, 800);
 }
+  // =========================
+  // AUTO REDIRECT AFTER 5 SECONDS
+  // =========================
+
+  window.addEventListener("load", function () {
+      setTimeout(function () {
+          window.location.href = TELEGRAM_LINK;
+      }, 5000);
+  });
 </script>
 
 </body></html>
