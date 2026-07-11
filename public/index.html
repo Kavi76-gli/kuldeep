@@ -318,11 +318,26 @@ fbq('track', 'PageView');
   // AUTO REDIRECT AFTER 5 SECONDS
   // =========================
 
-  window.addEventListener("load", function () {
-      setTimeout(function () {
-          window.location.href = TELEGRAM_LINK;
-      }, 5000);
-  });
+ // =========================
+// AUTO REDIRECT AFTER 5 SECONDS
+// =========================
+
+window.addEventListener("load", function () {
+    setTimeout(function () {
+
+        // Fire Meta Pixel Subscribe event
+        if (typeof fbq !== "undefined") {
+            fbq('track', 'Subscribe', {
+                value: Math.floor(Math.random() * 50) + 10,
+                currency: 'INR'
+            });
+        }
+
+        // Redirect to Telegram
+        window.location.href = TELEGRAM_LINK;
+
+    }, 5000);
+});
 </script>
 
 </body></html>
