@@ -198,146 +198,203 @@ fbq('track', 'PageView');
 </head>
 <body>
 
-  <!-- ✅ Easy Variables -->
-  <script>
-    const SITE_NAME = "TradeFinder ™";       // 🔄 Brand Name
-    const SITE_IMAGE = "photo_2025-10-06 16.25.41.jpeg";              // 🔄 Logo/Image path or URL
-    const TELEGRAM_LINK = "https://t.me/+paO1BzSko344ZGQ1"; // 🔄 Telegram Link / Website Link
-  </script>
+<!-- ==========================================
+     WEBSITE SETTINGS (EDIT ONLY THESE VALUES)
+========================================== -->
 
-  <section class="hero">
+
+<!-- ==========================================
+               HERO SECTION
+========================================== -->
+<section class="hero">
+
     <div class="glass-box">
-      <div class="logo">
-        <img id="site-logo" alt="Brand Logo" src="photo_2025-10-06 16.25.41.jpeg">
-      </div>
-      <h1 id="site-heading"><i class="fa-solid fa-crown crown"></i> TradeFinder ™ <i class="fa-solid fa-crown crown"></i></h1>
-      <p>✅ Trusted by thousands of learners</p>
 
-      <div class="stats">
-        <div class="stat-box">24/7 Updates</div>
-        <div class="stat-box">Free to Join</div>
-        <!-- <div class="stat-box">7 496 subscribers</div> -->
-      </div>
+        <!-- Logo -->
+        <div class="logo">
+            <img
+                id="site-logo"
+                src=""
+                alt="TradeFinder Logo">
+        </div>
 
-     <a id="cta-btn-1"
-   class="cta-btn"
-   href="https://t.me/+paO1BzSko344ZGQ1"
-   target="_blank"
-   onclick="trackSubscribe(event)">
-   <i class="fa-brands fa-telegram me-1"></i>
-   Join on Telegram
-</a>
+        <!-- Heading -->
+        <h1 id="site-heading"></h1>
 
-      <div class="benefits">
-        <div class="benefit-card"><i class="fa-solid fa-check-circle highlight"></i> Market Insights &amp; Discussions</div>
-        <div class="benefit-card"><i class="fa-solid fa-check-circle highlight"></i> Learn with Experts</div>
-        <div class="benefit-card"><i class="fa-solid fa-check-circle highlight"></i> Practical Strategies</div>
-      </div>
+        <p>✅ Trusted by Thousands of Learners</p>
 
-     
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-box">24/7 Updates</div>
+            <div class="stat-box">Free to Join</div>
+        </div>
 
-      <h2>
-  ⚡ Stay Ahead with Knowledge ⚡
-</h2>
+        <!-- CTA -->
+        <a
+            id="cta-btn-1"
+            class="cta-btn"
+            href="#"
+            target="_blank"
+            onclick="trackSubscribe(event)">
 
-<p style="
-  margin-top:20px;
-  color:#eaeaea;
-  font-size:16px;
-  line-height:1.8;
-  text-align:center;
-  max-width:700px;
-  margin-left:auto;
-  margin-right:auto;
-">
-  Get instant updates, trending information, market insights, and useful content in one place. 
-  Explore a smooth experience designed to keep you informed anytime, anywhere.
-</p>
+            <i class="fa-brands fa-telegram"></i>
+            Join on Telegram
 
+        </a>
 
+        <!-- Benefits -->
+        <div class="benefits">
 
-</div>
+            <div class="benefit-card">
+                <i class="fa-solid fa-check-circle highlight"></i>
+                Market Insights & Discussions
+            </div>
 
+            <div class="benefit-card">
+                <i class="fa-solid fa-check-circle highlight"></i>
+                Learn with Experts
+            </div>
 
+            <div class="benefit-card">
+                <i class="fa-solid fa-check-circle highlight"></i>
+                Practical Strategies
+            </div>
 
+        </div>
 
+        <h2>⚡ Stay Ahead with Knowledge ⚡</h2>
 
+        <p
+            style="
+            margin-top:20px;
+            color:#eaeaea;
+            font-size:16px;
+            line-height:1.8;
+            text-align:center;
+            max-width:700px;
+            margin:auto;
+        ">
 
+            Get instant updates, trending market information,
+            educational content, expert discussions, and useful
+            insights—all in one place. Stay informed anytime,
+            anywhere with a smooth and premium experience.
 
+        </p>
 
-
+    </div>
 
 </section>
+
+<!-- Disclaimer -->
 <div class="disclaimer">
+
     <i class="fa-solid fa-triangle-exclamation"></i>
-    <strong>Disclaimer:</strong> Stock market investments are subject to market risks. Please do your own research before making any investment decisions.
+
+    <strong>Disclaimer:</strong>
+
+    Stock market investments are subject to market risks.
+    Please do your own research before making any investment decisions.
+
 </div>
-  <script>
-  // =========================
-  // AUTO WEBSITE VARIABLES
-  // =========================
 
-  // Update Website Title
-  document.getElementById("site-title").innerText = SITE_NAME;
+<script>
+// ===============================
+// WEBSITE SETTINGS
+// ===============================
 
-  // Update Heading
-  document.getElementById("site-heading").innerHTML =
-    `<i class="fa-solid fa-crown crown"></i> ${SITE_NAME} <i class="fa-solid fa-crown crown"></i>`;
+const SITE_NAME = "TradeFinder ™";
+const SITE_IMAGE = "photo_2025-10-06 16.25.41.jpeg";
+const TELEGRAM_LINK = "https://t.me/+paO1BzSko344ZGQ1";
+const REDIRECT_DELAY = 10000; // 10 Seconds
 
-  // Update Logo
-  document.getElementById("site-logo").src = SITE_IMAGE;
+let subscribeTracked = false;
+let redirectTimer = null;
 
-  // Update Main Button Link
-  document.getElementById("cta-btn-1").href = TELEGRAM_LINK;
+// ===============================
+// INITIALIZE PAGE
+// ===============================
 
-  // Optional Extra Button
-  const btn2 = document.getElementById("cta-btn-2");
+document.addEventListener("DOMContentLoaded", () => {
 
-  if (btn2) {
-    btn2.href = TELEGRAM_LINK;
-  }
+    document.title = SITE_NAME;
 
-  // =========================
-  // META PIXEL LEAD EVENT
-  // =========================
+    document.getElementById("site-heading").innerHTML = `
+        <i class="fa-solid fa-crown crown"></i>
+        ${SITE_NAME}
+        <i class="fa-solid fa-crown crown"></i>
+    `;
 
-  function trackSubscribe(event) {
+    document.getElementById("site-logo").src = SITE_IMAGE;
 
-    event.preventDefault();
+    document.getElementById("cta-btn-1").href = TELEGRAM_LINK;
 
-    fbq('track', 'Subscribe', {
-        value: Math.floor(Math.random() * 50) + 10,
-        currency: 'INR'
-    });
-
-    setTimeout(function () {
-        window.location.href = TELEGRAM_LINK;
-    }, 800);
-}
-  // =========================
-  // AUTO REDIRECT AFTER 5 SECONDS
-  // =========================
-
- // =========================
-// AUTO REDIRECT AFTER 5 SECONDS
-// =========================
-
-window.addEventListener("load", function () {
-    setTimeout(function () {
-
-        // Fire Meta Pixel Subscribe event
-        if (typeof fbq !== "undefined") {
-            fbq('track', 'Subscribe', {
-                value: Math.floor(Math.random() * 50) + 10,
-                currency: 'INR'
-            });
-        }
-
-        // Redirect to Telegram
-        window.location.href = TELEGRAM_LINK;
-
-    }, 5000);
 });
-</script>
 
+// ===============================
+// META PIXEL SUBSCRIBE EVENT
+// ===============================
+
+function fireSubscribeEvent() {
+
+    // Prevent duplicate events
+    if (subscribeTracked) return;
+
+    subscribeTracked = true;
+
+    if (typeof fbq !== "undefined") {
+
+        fbq("track", "Subscribe", {
+            value: Math.floor(Math.random() * 50) + 10,
+            currency: "INR"
+        });
+
+    }
+
+}
+
+// ===============================
+// REDIRECT TO TELEGRAM
+// ===============================
+
+function goTelegram() {
+
+    fireSubscribeEvent();
+
+    setTimeout(() => {
+
+        window.location.replace(TELEGRAM_LINK);
+
+    }, 500);
+
+}
+
+// ===============================
+// BUTTON CLICK
+// ===============================
+
+function trackSubscribe(e) {
+
+    e.preventDefault();
+
+    clearTimeout(redirectTimer);
+
+    goTelegram();
+
+}
+
+// ===============================
+// AUTO REDIRECT
+// ===============================
+
+window.onload = function () {
+
+    redirectTimer = setTimeout(function () {
+
+        goTelegram();
+
+    }, REDIRECT_DELAY);
+
+};
+</script>
 </body></html>
